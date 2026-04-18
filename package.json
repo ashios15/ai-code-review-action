@@ -1,0 +1,33 @@
+{
+  "name": "ai-code-review-action",
+  "version": "1.0.0",
+  "description": "GitHub Action that uses Claude API to automatically review PRs — flags bugs, suggests refactors, checks accessibility.",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs --target node20 --clean",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint src --ext .ts"
+  },
+  "devDependencies": {
+    "@actions/core": "^1.11.0",
+    "@actions/github": "^6.0.0",
+    "@anthropic-ai/sdk": "^0.32.0",
+    "@types/node": "^22.0.0",
+    "eslint": "^9.0.0",
+    "tsup": "^8.3.0",
+    "typescript": "^5.7.0",
+    "vitest": "^2.1.0"
+  },
+  "keywords": [
+    "github-action",
+    "ai",
+    "code-review",
+    "claude",
+    "anthropic",
+    "accessibility",
+    "pull-request"
+  ],
+  "author": "Ashish Joshi",
+  "license": "MIT"
+}

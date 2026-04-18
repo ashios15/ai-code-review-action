@@ -1,0 +1,32 @@
+name: "AI Code Review"
+description: "Automatically review PRs using Claude AI — flags bugs, suggests refactors, checks accessibility"
+author: "Ashish Joshi"
+
+inputs:
+  anthropic-api-key:
+    description: "Anthropic API key for Claude"
+    required: true
+  github-token:
+    description: "GitHub token for PR access"
+    required: true
+    default: ${{ github.token }}
+  model:
+    description: "Claude model to use"
+    required: false
+    default: "claude-sonnet-4-20250514"
+  review-scope:
+    description: "What to review: bugs, a11y, perf, security, all"
+    required: false
+    default: "all"
+  max-files:
+    description: "Maximum number of changed files to review"
+    required: false
+    default: "15"
+
+runs:
+  using: "node20"
+  main: "dist/index.js"
+
+branding:
+  icon: "eye"
+  color: "purple"
