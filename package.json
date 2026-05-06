@@ -1,33 +1,72 @@
 {
-  "name": "ai-code-review-action",
-  "version": "1.0.0",
-  "description": "GitHub Action that uses Claude API to automatically review PRs — flags bugs, suggests refactors, checks accessibility.",
-  "main": "dist/index.js",
+  "name": "@ashios15/ai-code-review",
+  "version": "2.0.0",
+  "description": "AI code reviewer you can ship three ways: a GitHub Action, an MCP server, or a Claude Code subagent. One engine, three front doors.",
+  "type": "module",
+  "main": "dist/lib.js",
+  "types": "dist/lib.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/lib.d.ts",
+      "import": "./dist/lib.js"
+    }
+  },
+  "bin": {
+    "ai-code-review-mcp": "dist/mcp.js"
+  },
+  "files": [
+    "dist",
+    "action.yml",
+    "agents",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
-    "build": "tsup src/index.ts --format cjs --target node20 --clean",
+    "build": "tsup",
+    "prepublishOnly": "npm run build",
     "test": "vitest run",
-    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
     "lint": "eslint src --ext .ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.0",
+    "@modelcontextprotocol/sdk": "^1.0.4",
+    "zod": "^3.23.0"
+  },
+  "peerDependencies": {
+    "@actions/core": "^1.11.0",
+    "@actions/github": "^6.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@actions/core": { "optional": true },
+    "@actions/github": { "optional": true }
   },
   "devDependencies": {
     "@actions/core": "^1.11.0",
     "@actions/github": "^6.0.0",
-    "@anthropic-ai/sdk": "^0.32.0",
     "@types/node": "^22.0.0",
-    "eslint": "^9.0.0",
     "tsup": "^8.3.0",
     "typescript": "^5.7.0",
     "vitest": "^2.1.0"
   },
   "keywords": [
     "github-action",
-    "ai",
-    "code-review",
+    "mcp",
+    "model-context-protocol",
     "claude",
     "anthropic",
-    "accessibility",
-    "pull-request"
+    "code-review",
+    "claude-code",
+    "subagent"
   ],
-  "author": "Ashish Joshi",
-  "license": "MIT"
+  "engines": { "node": ">=20" },
+  "author": "ashios15",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ashios15/ai-code-review-action.git"
+  },
+  "homepage": "https://github.com/ashios15/ai-code-review-action#readme",
+  "bugs": { "url": "https://github.com/ashios15/ai-code-review-action/issues" },
+  "publishConfig": { "access": "public" }
 }

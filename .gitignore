@@ -1,0 +1,43 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build output — NOTE: dist/ IS committed because this repo ships as a
+# GitHub Action (runs: node20 → dist/action.js) and GH Actions execute
+# directly from the committed source. Do not add `dist/` here.
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment & secrets
+.env
+.env.*
+!.env.example
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/mcp.json
+!.vscode/settings.json.example
+
+# Test & coverage output
+coverage/
+.nyc_output/
+*.lcov
+
+# TypeScript incremental / caches
+*.tsbuildinfo
+.cache/
+.tmp/
+
+# Package archives
+*.tgz
+
+# Vitest / tsup
+.vitest-cache/
